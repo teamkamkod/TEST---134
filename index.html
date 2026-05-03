@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Caféothèque of Paris — cafés — Paris</title>
+  <meta name="description" content="Découvrez The Caféothèque of Paris, un café chaleureux et convivial à Paris, offrant des cafés de qualité et une ambiance locale." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #A86B3C;
+      --secondary: #F3E7D3;
+      --background: #FFF9F5;
+      --text: #3B2C1A;
+      --cta: #D97B3E;
+      --radius: 12px;
+      --section-pad: 96px;
+      --font-heading: 'Quicksand', sans-serif;
+      --font-body: 'Merriweather', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-heading);
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== NAV ===== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 249, 245, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(168, 107, 60, 0.15);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    #navbar.scrolled {
+      box-shadow: 0 2px 20px rgba(59, 44, 26, 0.1);
+    }
+
+    .nav-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+      display: block;
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--background);
+      border-bottom: 1px solid rgba(168, 107, 60, 0.15);
+      padding: 20px 24px 28px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(168, 107, 60, 0.1);
+    }
+
+    .nav-mobile a:hover { color: var(--primary); }
+
+    /* ===== HERO ===== */
+    #hero {
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-v5FvZ4vfStz-d5wb6XpQNwuMYTV7KpoAnAaEkiSn4Y-B6rcr6_LYjIzMjPSWezPIQ1Cqs2Vj4CKkhCdifq30w6X_8hxTDgvrKuB-1vs2KUoOMBzi8mMQm5FT5kYT9tDsvMaZeRGUQvncFnbbkgk4DtCZuh0YGNvlYMAPtByrQWppRzC0O3zq9fhk2Mus9BamgfcyGOo6jKubNpzvnmWH8mY36JHm_XTXw8ZcqJ6-DXhK4UwuCpI1t9xSk2_W70zElecQugbdCsXRdLZa4_No4qHsIHcZqKnq5FqOSfVtjSHOMVNyPg8JM-AU8l2ARoY5goXjFArMNFpYR2shjVF6jSwW2YnxBItiJ1QDjFCBP7LSWkXay6G697ue-srK-8B1W6q7al904Jjzii9rZM24_c29qrliXX41yHMACriChGStG0EdTrlw0xa7SD_Q&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+
+    .hero-bg.loaded { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 18, 8, 0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 0 40px;
+      margin-left: 8vw;
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    .hero-content p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 36px;
+      max-width: 540px;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--cta);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(168, 107, 60, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 2px solid rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll-hint svg { width: 20px; height: 20px; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== SECTION SHARED ===== */
+    section {
+      padding: var(--section-pad) 24px;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .section-divider {
+      width: 56px;
+      height: 3px;
+      background: var(--cta);
+      border-radius: 99px;
+      margin-bottom: 40px;
+    }
+
+    /* ===== FADE ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .fade-in.visible { opacity: 1; }
+
+    /* ===== ABOUT ===== */
+    #about {
+      background: var(--secondary);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .badge {
+      background: var(--background);
+      border: 1px solid rgba(168, 107, 60, 0.25);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .about-visual {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(59, 44, 26, 0.14);
+    }
+
+    .about-visual img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .about-visual:hover img { transform: scale(1.03); }
+
+    /* ===== MENU ===== */
+    #menu { background: var(--background); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .menu-card {
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid rgba(168, 107, 60, 0.12);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--cta);
+      border-radius: 4px 0 0 4px;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(168, 107, 60, 0.14);
+    }
+
+    .menu-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .menu-card p {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+    }
+
+    /* ===== GALLERY ===== */
+    #gallery { background: var(--text); padding: var(--section-pad) 24px; }
+
+    .gallery-header .section-tag { color: var(--secondary); opacity: 0.7; }
+    .gallery-header .section-headline { color: #fff; }
+    .gallery-header .section-divider { background: var(--cta); }
+    .gallery-caption {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 48px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 18, 8, 0);
+      transition: background 0.3s;
+    }
+
+    .gallery-item:hover .overlay { background: rgba(30, 18, 8, 0.25); }
+
+    /* ===== REVIEWS ===== */
+    #reviews { background: var(--secondary); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--background);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(59, 44, 26, 0.07);
+      border: 1px solid rgba(168, 107, 60, 0.08);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .review-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(59, 44, 26, 0.1);
+    }
+
+    .review-stars {
+      color: #F0A500;
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--text);
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .review-author {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary);
+    }
+
+    .review-quote {
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--secondary);
+      font-family: Georgia, serif;
+      margin-bottom: -10px;
+    }
+
+    /* ===== HOURS & LOCATION ===== */
+    #hours { background: var(--background); }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(168, 107, 60, 0.12);
+    }
+
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 12px 0;
+      font-size: 0.93rem;
+    }
+
+    .hours-table td:first-child {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--text);
+      width: 130px;
+    }
+
+    .hours-table td:last-child {
+      color: var(--primary);
+      font-weight: 300;
+    }
+
+    .today-row td { color: var(--cta) !important; font-weight: 700 !important; }
+
+    .map-embed {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(59, 44, 26, 0.1);
+    }
+
+    .map-embed iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      display: block;
+    }
+
+    .location-info {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .location-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .location-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--secondary);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .location-item span {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 300;
+      padding-top: 6px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--secondary); }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+
+    .contact-info p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-detail-item span.icon {
+      font-size: 1.2rem;
+    }
+
+    .contact-detail-item span.val {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-form-wrap form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--background);
+      border: 1.5px solid rgba(168, 107, 60, 0.25);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-weight: 300;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(168, 107, 60, 0.12);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .btn-submit {
+      background: var(--cta);
+      color: #fff;
+      padding: 15px 36px;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+      align-self: flex-start;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(168, 107, 60, 0.35);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.85);
+      padding: 56px 24px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      max-width: 280px;
+    }
+
+    .rating-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 10px 18px;
+      margin-top: 20px;
+    }
+
+    .rating-stars { color: #F0A500; font-size: 1rem; letter-spacing: 2px; }
+    .rating-num { font-family: var(--font-heading); font-weight: 700; color: #fff; font-size: 0.95rem; }
+    .rating-count { color: rgba(255,255,255,0.55); font-size: 0.8rem; }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-col p, .footer-col a {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      display: block;
+    }
+
+    .footer-col a:hover { color: var(--cta); }
+
+    .footer-map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      color: var(--cta) !important;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .footer-map-link:hover { opacity: 0.8; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: var(--radius);
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 28px;
+      color: #fff;
+      font-size: 2.2rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+      background: none; border: none;
+    }
+
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ===== RESPONSIVE 768px ===== */
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .nav-toggle { display: none; }
+
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .hours-grid { grid-template-columns: 1fr 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1.5fr 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-item img { height: 260px; }
+    }
+
+    /* ===== RESPONSIVE 1024px ===== */
+    @media (min-width: 1024px) {
+      .menu-grid { grid-template-columns: repeat(4, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .gallery-item img { height: 300px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .hero-content { margin-left: 0; padding: 0 24px; }
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 46px;
+      height: 46px;
+      background: var(--cta);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(168, 107, 60, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s;
+      z-index: 800;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <a href="#hero" class="nav-brand">The Caféothèque of Paris</a>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Galerie</a></li>
+      <li><a href="#reviews">Avis</a></li>
+      <li><a href="#hours">Horaires</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <nav class="nav-mobile" id="navMobile">
+    <a href="#about" class="mobile-link">À propos</a>
+    <a href="#menu" class="mobile-link">Menu</a>
+    <a href="#gallery" class="mobile-link">Galerie</a>
+    <a href="#reviews" class="mobile-link">Avis clients</a>
+    <a href="#hours" class="mobile-link">Horaires & Localisation</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Accueil">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Un café d'exception à Paris</h1>
+      <p>Savourez des cafés de qualité dans une ambiance chaleureuse et conviviale.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Réserver une table</a>
+        <a href="#menu" class="btn-secondary">Voir le menu</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Découvrir</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-label="À propos de nous">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <p class="section-tag">Notre histoire</p>
+          <h2 class="section-headline">À propos de nous</h2>
+          <div class="section-divider"></div>
+          <p>Bienvenue à The Caféothèque of Paris, un lieu où le café est une véritable passion. Notre café est fier d'offrir une expérience unique grâce à nos baristas hautement qualifiés et notre sélection de grains de café provenant du monde entier. Nous nous engageons à offrir une atmosphère accueillante et inclusive, avec une entrée et des sièges accessibles aux personnes en fauteuil roulant. Profitez de notre ambiance cosy et romantique, idéale pour un moment de détente ou une rencontre entre amis. Identifié comme une entreprise détenue par des femmes, nous sommes également fiers de notre engagement envers la communauté LGBTQ+.</p>
+          <div class="about-badges">
+            <span class="badge">♿ Accessible PMR</span>
+            <span class="badge">♀ Entreprise féminine</span>
+            <span class="badge">🏳️🌈 LGBTQ+ Friendly</span>
+            <span class="badge">☕ Baristas experts</span>
+          </div>
+        </div>
+        <div class="about-visual fade-in">
+          <img
+            src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vuZNTJoxp6_ZczGj9O_VRQ1bkiLdeRG-cmJZYxd2lLuB7CIlChMt7JapS_UdDvjot1l75tq61-gAHnr1rkHWqX8W1f2TyGENgjmd4vjeKqsE5wzGEz7eVbPJwprpbStDNIVMYviFg_-irQWQ9pMSP_6y_1VTyMPlAnElfWziYTGl5MLmthXIKTGuAQkHcwNkRxJOvH5F-8-4erclJ2rozQmHwmMf4-V83DVrL8XWtYD79gQDL6hfCrdMrKCxEdC60OUJmMQvvJUnhy1cxu4Kr9najo-UBMGh0ab6c5k_ZS90kFmbxezYuaBpx2p6Q-1Xg7NUM6jX-hB82kUpjZsI_HyhHs_wCOM7wMY9zG_eMJUuf0ZkL2Hy3fBsWcvPC4p77yYYILdoOFvAxLiYFqxQMTOvDUusJQ6orRuF6rkCjeOjqJPCDmJAw3Af5Ibw&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc"
+            alt="Intérieur de The Caféothèque of Paris"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" aria-label="Nos spécialités">
+    <div class="container">
+      <p class="section-tag fade-in">Ce que nous proposons</p>
+      <h2 class="section-headline fade-in">Nos spécialités</h2>
+      <div class="section-divider fade-in"></div>
+      <div class="menu-grid">
+        <div class="menu-card fade-in">
+          <div class="menu-icon">☕</div>
+          <h3>Café de spécialité</h3>
+          <p>Dégustez notre café de qualité, préparé avec soin par nos baristas experts.</p>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-icon">🍰</div>
+          <h3>Gâteaux faits maison</h3>
+          <p>Savourez nos délicieux muffins carottes et gâteau orange cranberries.</p>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-icon">🍵</div>
+          <h3>Sélection de thés</h3>
+          <p>Découvrez notre large choix de thés pour tous les goûts.</p>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-icon">🫙</div>
+          <h3>Petites assiettes</h3>
+          <p>Profitez de nos petites assiettes pour un repas léger et savoureux.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" aria-label="Galerie">
+    <div class="container">
+      <div class="gallery-header">
+        <p class="section-tag fade-in">Nos espaces</p>
+        <h2 class="section-headline fade-in">Galerie</h2>
+        <div class="section-divider fade-in"></div>
+        <p class="gallery-caption fade-in">Découvrez l'ambiance unique de notre café à travers nos photos authentiques.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item fade-in" data-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-sJm0Nqqn1nmV13B4U9CYuUcUVyQ8qsZ8djIpOvSN6f6Y0l65bgPzi3WiYRDe6-l6w8OjhjdvmzoGV5xC78lsuNk_nDUntR78Dj8i9BVG0GBFpNyvb3GjEXusfPvXoT5hXP3Nl1gUTkNgaidaT3TkXGuVu-iLvJQ5BArdhiqS9Aw0NL2vuqtz2plxWf_hWJHnJhcKAwphBhstDl3doye9Ddw_LI5-s_CgT2Bd8qSwf-lDRqI6oLGzOjT-vYOiU5Ao-dUv_f4ze56SlW5Epi6wGUrmlSbXyoGuBag-Jaj0ZwSMDwHGmDWRckMaVuunDcy2Vys5bvuR0KLftZBBirZfdpj_eBn4NLpw6Hinayk0zPFoalJ2dRm4K9MZsyBlXR0GE9AGNgvrjzOcaJdE8_IvN88BjmLp5X2N-VrZMP_CrtwLpO&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc">
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-sJm0Nqqn1nmV13B4U9CYuUcUVyQ8qsZ8djIpOvSN6f6Y0l65bgPzi3WiYRDe6-l6w8OjhjdvmzoGV5xC78lsuNk_nDUntR78Dj8i9BVG0GBFpNyvb3GjEXusfPvXoT5hXP3Nl1gUTkNgaidaT3TkXGuVu-iLvJQ5BArdhiqS9Aw0NL2vuqtz2plxWf_hWJHnJhcKAwphBhstDl3doye9Ddw_LI5-s_CgT2Bd8qSwf-lDRqI6oLGzOjT-vYOiU5Ao-dUv_f4ze56SlW5Epi6wGUrmlSbXyoGuBag-Jaj0ZwSMDwHGmDWRckMaVuunDcy2Vys5bvuR0KLftZBBirZfdpj_eBn4NLpw6Hinayk0zPFoalJ2dRm4K9MZsyBlXR0GE9AGNgvrjzOcaJdE8_IvN88BjmLp5X2N-VrZMP_CrtwLpO&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc" alt="Ambiance café 1" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item fade-in" data-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vuZNTJoxp6_ZczGj9O_VRQ1bkiLdeRG-cmJZYxd2lLuB7CIlChMt7JapS_UdDvjot1l75tq61-gAHnr1rkHWqX8W1f2TyGENgjmd4vjeKqsE5wzGEz7eVbPJwprpbStDNIVMYviFg_-irQWQ9pMSP_6y_1VTyMPlAnElfWziYTGl5MLmthXIKTGuAQkHcwNkRxJOvH5F-8-4erclJ2rozQmHwmMf4-V83DVrL8XWtYD79gQDL6hfCrdMrKCxEdC60OUJmMQvvJUnhy1cxu4Kr9najo-UBMGh0ab6c5k_ZS90kFmbxezYuaBpx2p6Q-1Xg7NUM6jX-hB82kUpjZsI_HyhHs_wCOM7wMY9zG_eMJUuf0ZkL2Hy3fBsWcvPC4p77yYYILdoOFvAxLiYFqxQMTOvDUusJQ6orRuF6rkCjeOjqJPCDmJAw3Af5Ibw&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc">
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vuZNTJoxp6_ZczGj9O_VRQ1bkiLdeRG-cmJZYxd2lLuB7CIlChMt7JapS_UdDvjot1l75tq61-gAHnr1rkHWqX8W1f2TyGENgjmd4vjeKqsE5wzGEz7eVbPJwprpbStDNIVMYviFg_-irQWQ9pMSP_6y_1VTyMPlAnElfWziYTGl5MLmthXIKTGuAQkHcwNkRxJOvH5F-8-4erclJ2rozQmHwmMf4-V83DVrL8XWtYD79gQDL6hfCrdMrKCxEdC60OUJmMQvvJUnhy1cxu4Kr9najo-UBMGh0ab6c5k_ZS90kFmbxezYuaBpx2p6Q-1Xg7NUM6jX-hB82kUpjZsI_HyhHs_wCOM7wMY9zG_eMJUuf0ZkL2Hy3fBsWcvPC4p77yYYILdoOFvAxLiYFqxQMTOvDUusJQ6orRuF6rkCjeOjqJPCDmJAw3Af5Ibw&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc" alt="Ambiance café 2" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item fade-in" data-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vnBX5RyDEMk12pFiWSb8f_O7F_P9XAHlqObE0MM0wPrUR4yi5Nx201cYAMUDYfyHkg3z3I433uVWCODdi8WHls5Nj7zEc-ACM9QpNo3VxIpMF23ERTrj1xYZ_raOWSMcb-Sa8e_25HESYqbqOSZii5EfWNuwR6DtwAxdT0_krvOXfJIrEbv-A0eh3djFAHapiHhztSL9P6CrOqkyhCcVT7FaeVe7y-A4CNRWusdbzi4tIsnA2FoLxSMiON4WivK7GL2GjScGTlvCu0cg7MGp0jx6q5Kj5l2sVLaCMzG1hVabnMigIcy4_laFigILPLA5yfgyFbZ2dZar7EgoWxblUImtrEX7fqx8gKTsj6SBNxFmStEgyy_WpUwkYNZcjtXbPoPrL6oPJGY3z4Fn4Aw8Wcbcuy5R3rf8pKxd_0QDNz9Timfm3KKCeLAwuIOQ&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc">
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vnBX5RyDEMk12pFiWSb8f_O7F_P9XAHlqObE0MM0wPrUR4yi5Nx201cYAMUDYfyHkg3z3I433uVWCODdi8WHls5Nj7zEc-ACM9QpNo3VxIpMF23ERTrj1xYZ_raOWSMcb-Sa8e_25HESYqbqOSZii5EfWNuwR6DtwAxdT0_krvOXfJIrEbv-A0eh3djFAHapiHhztSL9P6CrOqkyhCcVT7FaeVe7y-A4CNRWusdbzi4tIsnA2FoLxSMiON4WivK7GL2GjScGTlvCu0cg7MGp0jx6q5Kj5l2sVLaCMzG1hVabnMigIcy4_laFigILPLA5yfgyFbZ2dZar7EgoWxblUImtrEX7fqx8gKTsj6SBNxFmStEgyy_WpUwkYNZcjtXbPoPrL6oPJGY3z4Fn4Aw8Wcbcuy5R3rf8pKxd_0QDNz9Timfm3KKCeLAwuIOQ&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc" alt="Ambiance café 3" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item fade-in" data-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vKFOUu37xyZi3MwETlYVOBw4_05JBnY9RXFPT0pcqjJjdSWPU2E2l9EHqAS8cUoBwuft2oufJEmvULtQLM2UK-9A807Fn40EhtgnHpOlGZ7Ninz1ArysfRXqVL5funLPOVX_LX9vR8EDkZLbW7uhHS5tRnBGgX-oaZmOpN8k86moHjBz8eNkDpWVJAO40C4_hoLCVJGa1KvB1HqQKLx83xOFzoSpm-iQdt0LHskCqu-RNeDXnEMmJThv3uj6WqN4_WdzuBSSXZXEEZia-7hwsH7LosjhMvITb4gyf6r_8kXJPgaVerUwjfeBaWuknEQvvEnTz7iJEEDZJT7tjdd2Zy-GiwT6g2CcqTeiw1pCr_GsNRy8MiH-HcBY4Q8mpvlxcAtZZbgPQPmMMscRAnl8UxFi19DUnfTECLurPiqiB5d32qsM-TWSfbZn2z0mPv&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc">
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vKFOUu37xyZi3MwETlYVOBw4_05JBnY9RXFPT0pcqjJjdSWPU2E2l9EHqAS8cUoBwuft2oufJEmvULtQLM2UK-9A807Fn40EhtgnHpOlGZ7Ninz1ArysfRXqVL5funLPOVX_LX9vR8EDkZLbW7uhHS5tRnBGgX-oaZmOpN8k86moHjBz8eNkDpWVJAO40C4_hoLCVJGa1KvB1HqQKLx83xOFzoSpm-iQdt0LHskCqu-RNeDXnEMmJThv3uj6WqN4_WdzuBSSXZXEEZia-7hwsH7LosjhMvITb4gyf6r_8kXJPgaVerUwjfeBaWuknEQvvEnTz7iJEEDZJT7tjdd2Zy-GiwT6g2CcqTeiw1pCr_GsNRy8MiH-HcBY4Q8mpvlxcAtZZbgPQPmMMscRAnl8UxFi19DUnfTECLurPiqiB5d32qsM-TWSfbZn2z0mPv&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc" alt="Ambiance café 4" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item fade-in" data-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vaMi5U__pXBGIqxBRLaDMhiv1N1kOA7peBPmPn2XENwb5_azOsvwtQNCiDHmcG0WJnTMx157xsJ8hdiYdMh2IzpI5Lehira750ZRxqOnRbAdN2o0dAJqUqhm8aJO2Ac-knv_phhjz6eaMfG3ytYdWyM7arG06lCKhvghMSW92rnYLgtiobZLVooWdJ-UzU1wRbME05uxGNmvw9QazNOC-LRRtOkT7TOQ5i2-55zWVM3TL1_Boxr2qT0ki9Z2NV85d-dB0AKtij94ztoxy344R0xjIfFdXwOZiBCz0fGA5WRYDiRQmVpCg7G8SxzfM0FrOh9UNJ4vb20Sv0diSMpzDV2zHTui-doS6fy_-jYh2mSEMarfVT0KBIAOsX-brZrC_Ml98UetRBFTE9EILgljAHAJXuz31SB28-kJTVXsA&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc">
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photo_reference=Ab43m-vaMi5U__pXBGIqxBRLaDMhiv1N1kOA7peBPmPn2XENwb5_azOsvwtQNCiDHmcG0WJnTMx157xsJ8hdiYdMh2IzpI5Lehira750ZRxqOnRbAdN2o0dAJqUqhm8aJO2Ac-knv_phhjz6eaMfG3ytYdWyM7arG06lCKhvghMSW92rnYLgtiobZLVooWdJ-UzU1wRbME05uxGNmvw9QazNOC-LRRtOkT7TOQ5i2-55zWVM3TL1_Boxr2qT0ki9Z2NV85d-dB0AKtij94ztoxy344R0xjIfFdXwOZiBCz0fGA5WRYDiRQmVpCg7G8SxzfM0FrOh9UNJ4vb20Sv0diSMpzDV2zHTui-doS6fy_-jYh2mSEMarfVT0KBIAOsX-brZrC_Ml98UetRBFTE9EILgljAHAJXuz31SB28-kJTVXsA&key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc" alt="Ambiance café 5" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" aria-label="Avis clients">
+    <div class="container">
+      <p class="section-tag fade-in">Ce qu'ils disent</p>
+      <h2 class="section-headline fade-in">Avis clients</h2>
+      <div class="section-divider fade-in"></div>
+      <div class="reviews-grid">
+        <div class="review-card fade-in">
+          <div class="review-quote">"</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Pour les amateurs de (vrai)café 🤌 . Décor particulier, ambiance sympathique, très bons cafés à déguster avec un choix de gâteaux faits maison (testés et validés : le Muffin carottes et gâteau orange cranberries ).</p>
+          <p class="review-author">Ma Nel</p>
+        </div>
+        <div class="review-card fade-in">
+          <div class="review-quote">"</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">J'étais servi par Ariel! J'ai apprécié beaucoup son service et sa gentillesse !  Bonne ambiance généralement. Je recommande</p>
+          <p class="review-author">Marina Nikolidaki</p>
+        </div>
+        <div class="review-card fade-in">
+          <div class="review-quote">"</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Je n'ai pas déjeuné, juste pris un café. Délicieux. Très bel endroit, calme et personnel souriant. Je recommande ce lieu.</p>
+          <p class="review-author">LAURA COMBES</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="hours" aria-label="Horaires et localisation">
+    <div class="container">
+      <p class="section-tag fade-in">Nous trouver</p>
+      <h2 class="section-headline fade-in">Horaires et localisation</h2>
+      <div class="section-divider fade-in"></div>
+      <div class="hours-grid">
+        <div class="fade-in">
+          <table class="hours-table" aria-label="Horaires d'ouverture">
+            <tbody>
+              <tr id="row-monday"><td>Lundi</td><td>9h – 19h</td></tr>
+              <tr id="row-tuesday"><td>Mardi</td><td>9h – 19h</td></tr>
+              <tr id="row-wednesday"><td>Mercredi</td><td>9h – 19h</td></tr>
+              <tr id="row-thursday"><td>Jeudi</td><td>9h – 19h</td></tr>
+              <tr id="row-friday"><td>Vendredi</td><td>9h – 19h</td></tr>
+              <tr id="row-saturday"><td>Samedi</td><td>9h30 – 19h</td></tr>
+              <tr id="row-sunday"><td>Dimanche</td><td>9h30 – 19h</td></tr>
+            </tbody>
+          </table>
+          <div class="location-info" style="margin-top: 36px;">
+            <div class="location-item">
+              <div class="location-icon">📍</div>
+              <span>52 Rue de l'Hôtel de Ville, 75004 Paris, France</span>
+            </div>
+            <div class="location-item">
+              <div class="location-icon">📞</div>
+              <span><a href="tel:+33153018384" style="color: var(--primary); font-family: var(--font-heading); font-weight: 600;">+33 1 53 01 83 84</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCd8_Lzx6EPWwnELP47YrOwKzAMK9CV9fc&q=place_id:ChIJ3eCHM_1x5kcRRfrf5-yoThc"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Carte The Caféothèque of Paris"
+            ></iframe>
+          </div>
+          <a
+            href="https://www.google.com/maps/place/?q=place_id:ChIJ3eCHM_1x5kcRRfrf5-yoThc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+            style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; text-decoration: none;"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Voir sur Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-label="Contactez-nous">
+    <div class="container">
+      <p class="section-tag fade-in">Restons en contact</p>
+      <h2 class="section-headline fade-in">Contactez-nous</h2>
+      <div class="section-divider fade-in"></div>
+      <div class="contact-wrapper">
+        <div class="contact-info fade-in">
+          <p>Pour toute question, n'hésitez pas à nous appeler ou à nous rendre visite.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-item">
+              <span class="icon">📍</span>
+              <span class="val">52 Rue de l'Hôtel de Ville, 75004 Paris, France</span>
+            </div>
+            <div class="contact-detail-item">
+              <span class="icon">📞</span>
+              <span class="val"><a href="tel:+33153018384" style="color: var(--primary);">+33 1 53 01 83 84</a></span>
+            </div>
+            <div class="contact-detail-item">
+              <span class="icon">🕐</span>
+              <span class="val">Lun–Ven : 9h–19h | Sam–Dim : 9h30–19h</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap fade-in">
+          <form action="#" method="post" novalidate aria-label="Formulaire de contact">
+            <div class="form-group">
+              <label for="contact-name">Nom complet</label>
+              <input type="text" id="contact-name" name="name" placeholder="Votre nom" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Adresse e-mail</label>
+              <input type="email" id="contact-email" name="email" placeholder="votre@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" placeholder="Votre message…" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Envoyer le message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>The Caféothèque of Paris</h3>
+          <p>Un café d'exception au cœur de Paris, où chaque tasse raconte une histoire.</p>
+          <div class="rating-badge" aria-label="Note: 4.4 sur 5 basée sur 3645 avis">
+            <div class="rating-stars">★★★★☆</div>
+            <span class="rating-num">4.4</span>
+            <span class="rating-count">3 645 avis</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="#about">À propos</a>
+          <a href="#menu">Nos spécialités</a>
+          <a href="#gallery">Galerie</a>
+          <a href="#reviews">Avis clients</a>
+          <a href="#hours">Horaires</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Nous trouver</h4>
+          <p>52 Rue de l'Hôtel de Ville</p>
+          <p>75004 Paris, France</p>
+          <a href="tel:+33153018384" style="margin-top: 8px; display: block;">+33 1 53 01 83 84</a>
+          <a
+            href="https://www.google.com/maps/place/?q=place_id:ChIJ3eCHM_1x5kcRRfrf5-yoThc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-map-link"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Voir sur Google Maps
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 The Caféothèque of Paris. Tous droits réservés.</p>
+        <p>52 Rue de l'Hôtel de Ville, 75004 Paris</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse de galerie">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">×</button>
+    <img src="" alt="" id="lightboxImg" />
+  </div>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">↑</button>
+
+  <script>
+    // ===== NAV TOGGLE =====
+    const navToggle = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
+    const navbar = document.getElementById('navbar');
+
+    navToggle.addEventListener('click', () => {
+      navMobile.classList.toggle('open');
+    });
+
+    navMobile.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMobile.classList.remove('open');
+      });
+    });
+
+    // ===== NAVBAR SCROLL =====
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ===== HERO BG PARALLAX INIT =====
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('load', () => {
+      heroBg.classList.add('loaded');
+    });
+
+    // ===== HIGHLIGHT TODAY =====
+    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+    const today = days[new Date().getDay()];
+    const todayRow = document.getElementById('row-' + today);
+    if (todayRow) todayRow.classList.add('today-row');
+
+    // ===== INTERSECTION OBSERVER - FADE IN =====
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ===== GALLERY LIGHTBOX =====
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const src = item.getAttribute('data-src');
+        const alt = item.querySelector('img').alt;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    // ===== SCROLL TO TOP =====
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ===== FORM SUBMIT =====
+    const form = document.querySelector('form[action="#"]');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('.btn-submit');
+        btn.textContent = 'Message envoyé ✓';
+        btn.style.background = '#4CAF50';
+        setTimeout(() => {
+          btn.textContent = 'Envoyer le message';
+          btn.style.background = '';
+          form.reset();
+        }, 3000);
+      });
+    }
+  </script>
+</body>
+</html>
